@@ -1,0 +1,115 @@
+pip install adafruit-blinka
+pip install adafruit-circuitpython-dht
+
+
+aryaman@aryaman-desktop:~$ ssh user@10.42.0.17
+user@10.42.0.17's password: 
+Linux rpi4b 6.18.34+rpt-rpi-v8 #1 SMP PREEMPT Debian 1:6.18.34-1+rpt1 (2026-06-09) aarch64
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+Last login: Sun Jun 28 19:25:56 2026 from 10.42.0.1
+user@rpi4b:~ $ source dht/bin/activate
+(dht) user@rpi4b:~ $ python sender1.py 
+Sending UDP packets to 10.42.0.1:5000
+{'node': 'sensor_pi', 'timestamp': 1782655188, 'temperature': 24.7, 'humidity': 37, 'light': 1}
+{'node': 'sensor_pi', 'timestamp': 1782655189, 'temperature': 24.7, 'humidity': 37, 'light': 1}
+{'node': 'sensor_pi', 'timestamp': 1782655190, 'temperature': 24.5, 'humidity': 36, 'light': 1}
+{'node': 'sensor_pi', 'timestamp': 1782655191, 'temperature': 24.5, 'humidity': 36, 'light': 1}
+{'node': 'sensor_pi', 'timestamp': 1782655193, 'temperature': 24.5, 'humidity': 36, 'light': 1}
+{'node': 'sensor_pi', 'timestamp': 1782655194, 'temperature': 24.5, 'humidity': 36, 'light': 1}
+{'node': 'sensor_pi', 'timestamp': 1782655195, 'temperature': 24.5, 'humidity': 36, 'light': 1}
+{'node': 'sensor_pi', 'timestamp': 1782655196, 'temperature': 24.5, 'humidity': 36, 'light': 1}
+{'node': 'sensor_pi', 'timestamp': 1782655197, 'temperature': 24.5, 'humidity': 36, 'light': 1}
+
+
+
+aryaman@aryaman-desktop:~$ python3 listener.py 
+Listening on UDP 0.0.0.0:5000
+{'node': 'sensor_pi', 'timestamp': 1782655188, 'temperature': 24.7, 'humidity': 37, 'light': 1}
+forwarded
+{'node': 'sensor_pi', 'timestamp': 1782655189, 'temperature': 24.7, 'humidity': 37, 'light': 1}
+forwarded
+{'node': 'sensor_pi', 'timestamp': 1782655190, 'temperature': 24.5, 'humidity': 36, 'light': 1}
+forwarded
+{'node': 'sensor_pi', 'timestamp': 1782655191, 'temperature': 24.5, 'humidity': 36, 'light': 1}
+forwarded
+{'node': 'sensor_pi', 'timestamp': 1782655193, 'temperature': 24.5, 'humidity': 36, 'light': 1}
+forwarded
+{'node': 'sensor_pi', 'timestamp': 1782655194, 'temperature': 24.5, 'humidity': 36, 'light': 1}
+forwarded
+{'node': 'sensor_pi', 'timestamp': 1782655195, 'temperature': 24.5, 'humidity': 36, 'light': 1}
+forwarded
+{'node': 'sensor_pi', 'timestamp': 1782655196, 'temperature': 24.5, 'humidity': 36, 'light': 1}
+forwarded
+{'node': 'sensor_pi', 'timestamp': 1782655197, 'temperature': 24.5, 'humidity': 36, 'light': 1}
+forwarded
+
+
+
+
+aryaman@aryaman-desktop:~$ ssh st@192.168.10.12
+st@192.168.10.12's password: 
+Welcome to Ubuntu 20.04.6 LTS (GNU/Linux 5.15.0-139-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+Expanded Security Maintenance for Applications is not enabled.
+
+0 updates can be applied immediately.
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
+Failed to connect to https://changelogs.ubuntu.com/meta-release-lts. Check your Internet connection or proxy settings
+
+Your Hardware Enablement Stack (HWE) is supported until April 2025.
+Last login: Sun Jun 28 19:27:58 2026 from 192.168.10.7
+st@gnbnms:~$ python3 listener.py 
+Listening on UDP 0.0.0.0:5000
+
+Received packet
+From: 192.168.10.7:52886
+{'node': 'sensor_pi', 'timestamp': 1782655188, 'temperature': 24.7, 'humidity': 37, 'light': 1}
+
+Received packet
+From: 192.168.10.7:52886
+{'node': 'sensor_pi', 'timestamp': 1782655189, 'temperature': 24.7, 'humidity': 37, 'light': 1}
+
+Received packet
+From: 192.168.10.7:52886
+{'node': 'sensor_pi', 'timestamp': 1782655190, 'temperature': 24.5, 'humidity': 36, 'light': 1}
+
+Received packet
+From: 192.168.10.7:52886
+{'node': 'sensor_pi', 'timestamp': 1782655191, 'temperature': 24.5, 'humidity': 36, 'light': 1}
+
+Received packet
+From: 192.168.10.7:52886
+{'node': 'sensor_pi', 'timestamp': 1782655193, 'temperature': 24.5, 'humidity': 36, 'light': 1}
+
+Received packet
+From: 192.168.10.7:52886
+{'node': 'sensor_pi', 'timestamp': 1782655194, 'temperature': 24.5, 'humidity': 36, 'light': 1}
+
+Received packet
+From: 192.168.10.7:52886
+{'node': 'sensor_pi', 'timestamp': 1782655195, 'temperature': 24.5, 'humidity': 36, 'light': 1}
+
+Received packet
+From: 192.168.10.7:52886
+{'node': 'sensor_pi', 'timestamp': 1782655196, 'temperature': 24.5, 'humidity': 36, 'light': 1}
+
+Received packet
+From: 192.168.10.7:52886
+{'node': 'sensor_pi', 'timestamp': 1782655197, 'temperature': 24.5, 'humidity': 36, 'light': 1}
+
